@@ -77,3 +77,30 @@ void frame(std::istream &in, std::ostream &out, lavrentev::set_map &sets, lavren
 
   out << "(" << min_x << " " << min_y << ") (" << max_x << " " << max_y << ")\n";
 }
+
+void frameset(std::istream &in, std::ostream &out, lavrentev::set_map &sets, lavrentev::circle_data &ac)
+{
+  std::string set_name;
+  in >> set_name;
+  if (sets.find(set_name) == sets.end())
+  {
+    throw std::logic_error("Set does not exist");
+  }
+
+  int min_x = INT_MAX, min_y = INT_MAX, max_x = INT_MIN, max_y = INT_MIN;
+
+  for (const auto &circle_ptr : sets[set_name])
+  {
+    int circle_min_x = circle_ptr->getX() - circle_ptr->getRadius();
+    int circle_min_y = circle_ptr->getY() - circle_ptr->getRadius();
+    int circle_max_x = circle_ptr->getX() + circle_ptr->getRadius();
+    int circle_max_y = circle_ptr->getY() + circle_ptr->getRadius();
+
+    min_x = std::min(min_x, circle_min_x);
+    min_y = std::min(min_y, circle_min_y);
+    max_x = std::max(max_x, circle_max_x);
+    max_y = std::max(max_y, circle_max_y);
+  }
+
+  out << "(" << min_x << " " << min_y << ") (" << max_x << " " << max_y << ")\n";
+}

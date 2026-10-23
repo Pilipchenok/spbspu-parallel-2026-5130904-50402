@@ -6,15 +6,15 @@ namespace lavrentev
 {
   using cmd_t = void (*)(
     std::istream &, std::ostream &,
-    circle_map &,
-    circle_vector &
+    set_map &,
+    circle_data &
   );
 }
 
 int main()
 {
-  lavrentev::circle_map sets;
-  lavrentev::circle_vector all_circles;
+  lavrentev::set_map sets;
+  lavrentev::circle_data all_circles;
   std::unordered_map<std::string, lavrentev::cmd_t> cmds;
 
   cmds["circle"] = lavrentev::circle;

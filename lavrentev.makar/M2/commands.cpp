@@ -104,3 +104,10 @@ void frameset(std::istream &in, std::ostream &out, lavrentev::set_map &sets, lav
 
   out << "(" << min_x << " " << min_y << ") (" << max_x << " " << max_y << ")\n";
 }
+
+void spawn(std::istream &in, std::ostream &, lavrentev::set_map &sets, lavrentev::circle_data &ac)
+{
+  std::string process_name;
+  in >> process_name;
+  
+}

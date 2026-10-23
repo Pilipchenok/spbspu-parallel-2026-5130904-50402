@@ -17,10 +17,10 @@ namespace lavrentev
   void set(std::istream &in, std::ostream &, set_map &sets, circle_data &ac);
   void show(std::istream &in, std::ostream &out, set_map &, circle_data &ac);
   void showset(std::istream &in, std::ostream &out, set_map &sets, circle_data &ac);
-  void frame(std::istream &in, std::ostream &, set_map &sets, circle_data &ac);
-  void frameset(std::istream &in, std::ostream &, set_map &sets, circle_data &ac);
-  void spawn(std::istream &in, std::ostream &out, set_map &sets, circle_data &ac);
-  void area_on(std::istream &in, std::ostream &out, set_map &sets, circle_data &ac);
+  void frame(std::istream &in, std::ostream &out, set_map &sets, circle_data &ac);
+  void frameset(std::istream &in, std::ostream &out, set_map &sets, circle_data &ac);
+  void spawn(std::istream &in, std::ostream &, set_map &sets, circle_data &ac);
+  void area_on(std::istream &in, std::ostream &, set_map &sets, circle_data &ac);
   void status(std::istream &in, std::ostream &, set_map &sets, circle_data &ac);
   void wait(std::istream &in, std::ostream &, set_map &sets, circle_data &ac);
 }

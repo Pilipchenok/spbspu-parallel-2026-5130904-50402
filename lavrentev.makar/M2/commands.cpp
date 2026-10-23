@@ -59,3 +59,21 @@ void showset(std::istream &in, std::ostream &out, lavrentev::set_map &sets, lavr
     out << circle_ptr->getRadius() << " (" << circle_ptr->getX() << " " << circle_ptr->getY() << ")\n";
   }
 }
+
+void frame(std::istream &in, std::ostream &out, lavrentev::set_map &sets, lavrentev::circle_data &ac)
+{
+  std::string shape_name;
+  in >> shape_name;
+  if (ac.find(shape_name) == ac.end())
+  {
+    throw std::logic_error("Circle does not exist");
+  }
+
+  int min_x, min_y, max_x, max_y;
+  min_x = ac[shape_name]->getX() - ac[shape_name]->getRadius();
+  min_y = ac[shape_name]->getY() - ac[shape_name]->getRadius();
+  max_x = ac[shape_name]->getX() + ac[shape_name]->getRadius();
+  max_y = ac[shape_name]->getY() + ac[shape_name]->getRadius();
+
+  out << "(" << min_x << " " << min_y << ") (" << max_x << " " << max_y << ")\n";
+}

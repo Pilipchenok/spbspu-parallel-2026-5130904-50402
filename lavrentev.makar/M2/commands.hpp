@@ -10,7 +10,7 @@
 
 namespace lavrentev
 {
-  using circle_map = std::unordered_map<std::string, std::shared_ptr<lavrentev::Circle>>;
+  using circle_map = std::unordered_map<std::string, std::vector<std::shared_ptr<lavrentev::Circle>>>;
   using circle_vector = std::vector<std::shared_ptr<lavrentev::Circle>>;
 
   void circle(std::istream &in, std::ostream &, circle_map &db, circle_vector &vec);

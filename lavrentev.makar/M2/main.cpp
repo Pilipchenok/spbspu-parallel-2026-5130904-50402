@@ -1,0 +1,55 @@
+#include <iostream>
+#include <circle.hpp>
+#include "commands.hpp"
+
+namespace lavrentev
+{
+  using cmd_t = void (*)(
+    std::istream &, std::ostream &,
+    set_map &,
+    circle_data &
+  );
+}
+
+int main()
+{
+  lavrentev::set_map sets;
+  lavrentev::circle_data all_circles;
+  std::unordered_map<std::string, lavrentev::cmd_t> cmds;
+
+  cmds["circle"] = lavrentev::circle;
+  cmds["set"] = lavrentev::set;
+  cmds["show"] = lavrentev::show;
+  cmds["showset"] = lavrentev::showset;
+  cmds["frame"] = lavrentev::frame;
+  cmds["frameset"] = lavrentev::frameset;
+  cmds["spawn"] = lavrentev::spawn;
+  cmds["area-on"] = lavrentev::area_on;
+  cmds["status"] = lavrentev::status;
+  cmds["wait"] = lavrentev::wait;
+
+  std::string cmd;
+  while (std::cin >> cmd)
+  {
+    try
+    {
+      cmds.at(cmd)(std::cin, std::cout, sets, all_circles);
+    } catch (const std::out_of_range &)
+    {
+      std::cout << "<UNKNOWN COMMAND>\n";
+      auto toignore = std::numeric_limits<std::streamsize>::max();
+      std::cin.ignore(toignore, '\n');
+    } catch (const std::logic_error &e)
+    {
+      std::cout << "<INVALID COMMAND>\n";
+      auto toignore = std::numeric_limits<std::streamsize>::max();
+      std::cin.ignore(toignore, '\n');
+    }
+  }
+
+  if (!std::cin.eof())
+  {
+    std::cerr << "Bad input\n";
+    return 1;
+  }
+}

@@ -5,8 +5,8 @@
 #include <utility>
 #include <vector>
 
-#include "circle.hpp"
-#include "polygon.hpp"
+#include <circle.hpp>
+#include <polygon.hpp>
 
 namespace lavrentev
 {
@@ -18,6 +18,7 @@ namespace lavrentev
   count_pair_t calculate(const f_t &figures, const Polygon &pg, std::size_t tries, int seed);
   std::size_t countInside(const f_t &figures, double x, double y);
   area_pair_t area(const f_t &figures, const Polygon &pg, std::size_t threads, std::size_t tries, int seed);
+  Polygon buildBoundingBox(const f_t &figures);
 }
 
 #endif

@@ -1,6 +1,13 @@
-#include "circle.hpp"
+#include <circle.hpp>
 
 lavrentev::Circle::Circle(int r, int x, int y):
+  radius_(r),
+  x_(x),
+  y_(y)
+{}
+
+lavrentev::Circle::Circle(std::string name, int r, int x, int y):
+  name_(name),
   radius_(r),
   x_(x),
   y_(y)
